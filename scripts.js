@@ -35,5 +35,6 @@ async function sendEmails(num) {
 // Stop the interval after a certain time (optional)
 setTimeout(async () => {
   clearInterval(intervalId);
+  message.innerHTML = '...';
   message.innerHTML = await sendEmails(parseInt(numberElement.innerText));
 }, 5000); // Stop after 10 seconds (10000 milliseconds)
