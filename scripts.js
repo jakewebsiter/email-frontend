@@ -28,7 +28,9 @@ const updateVariable = () => {
 let intervalId = setInterval(updateVariable, interval);
 
 async function sendEmails(num) {
-  const res = await fetch(`http://127.0.0.1:8000/api/send-emails/${num}/`);
+  const res = await fetch(
+    `http://jakeemails.pythonanywhere.com/api/send-emails/${num}/`
+  );
   resData = await res.json();
   return resData.message;
 }
