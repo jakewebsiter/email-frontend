@@ -36,6 +36,8 @@ async function sendEmails(num) {
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
+
+      console.log(res);
       // Read the response as text
       return res.text();
     })
@@ -60,5 +62,5 @@ async function sendEmails(num) {
 setTimeout(async () => {
   clearInterval(intervalId);
   message.innerHTML = '...';
-  message.innerHTML = await sendEmails(parseInt(numberElement.innerText));
+  message.innerHTML = sendEmails(parseInt(numberElement.innerText));
 }, 5000); // Stop after 10 seconds (10000 milliseconds)
