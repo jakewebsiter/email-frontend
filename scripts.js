@@ -44,7 +44,7 @@ async function sendEmails(num) {
         return; // Exit the function if response is empty
       }
       // Parse the response as JSON
-      let resData = JSON.parse(responseText);
+      let resData = JSON.parse(resText);
       // Handle the response data
       return resData;
     })
