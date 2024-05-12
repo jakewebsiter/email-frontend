@@ -49,7 +49,7 @@ async function sendEmails(num) {
         return; // Exit the function if response is empty
       }
 
-      return resText;
+      message.innerText = resText;
     })
     .catch((error) => {
       // Handle errors
@@ -60,5 +60,5 @@ async function sendEmails(num) {
 setTimeout(async () => {
   clearInterval(intervalId);
   message.innerHTML = '...';
-  message.innerHTML = await sendEmails(parseInt(numberElement.innerText));
+  sendEmails(parseInt(numberElement.innerText));
 }, 5000); // Stop after 10 seconds (10000 milliseconds)
