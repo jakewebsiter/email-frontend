@@ -49,11 +49,7 @@ async function sendEmails(num) {
         return; // Exit the function if response is empty
       }
 
-      console.log(resData);
-      // Parse the response as JSON
-      let resData = JSON.parse(resText);
-      // Handle the response data
-      return resData;
+      return resText;
     })
     .catch((error) => {
       // Handle errors
