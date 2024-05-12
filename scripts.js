@@ -36,8 +36,18 @@ async function sendEmails(num) {
       headers: { 'ngrok-skip-browser-warning': 0 },
     }
   );
-  console.log(await res.json());
+
+  // console.log(await res.json());
   resData = await res.json();
+
+  if (resData.trim() === '') {
+    // Handle empty response
+    console.log('Empty response received');
+  } else {
+    resData = JSON.parse(responseData); // Parse the response
+    // Handle response data
+  }
+
   return resData.message;
 }
 // Stop the interval after a certain time (optional)
