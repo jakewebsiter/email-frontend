@@ -36,7 +36,7 @@ async function sendEmails(num) {
       headers: { 'ngrok-skip-browser-warning': 0 },
     }
   );
-  console.log(await res);
+  console.log(await res.json());
   resData = await res.json();
   return resData.message;
 }
