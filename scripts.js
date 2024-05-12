@@ -48,6 +48,8 @@ async function sendEmails(num) {
         console.log('Empty response received');
         return; // Exit the function if response is empty
       }
+
+      console.log(resData);
       // Parse the response as JSON
       let resData = JSON.parse(resText);
       // Handle the response data
@@ -62,5 +64,5 @@ async function sendEmails(num) {
 setTimeout(async () => {
   clearInterval(intervalId);
   message.innerHTML = '...';
-  message.innerHTML = sendEmails(parseInt(numberElement.innerText));
+  message.innerHTML = await sendEmails(parseInt(numberElement.innerText));
 }, 5000); // Stop after 10 seconds (10000 milliseconds)
