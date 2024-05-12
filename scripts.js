@@ -28,27 +28,32 @@ const updateVariable = () => {
 let intervalId = setInterval(updateVariable, interval);
 
 async function sendEmails(num) {
-  const res = await fetch(
-    `https://bc10-213-18-154-229.ngrok-free.app//api/send-emails/${num}/`,
-    {
-      method: 'GET',
-      mode: 'no-cors',
-      headers: { 'ngrok-skip-browser-warning': 0 },
-    }
-  );
-
-  // console.log(await res.json());
-  resData = await res.json();
-
-  if (resData.trim() === '') {
-    // Handle empty response
-    console.log('Empty response received');
-  } else {
-    resData = JSON.parse(responseData); // Parse the response
-    // Handle response data
-  }
-
-  return resData.message;
+  fetch(
+    `https://bc10-213-18-154-229.ngrok-free.app/api/send-emails/${numEmails}/`
+  )
+    .then((res) => {
+      // Check if the response is successful
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // Read the response as text
+      return res.text();
+    })
+    .then((resText) => {
+      // Check if the response is empty
+      if (resText.trim() === '') {
+        console.log('Empty response received');
+        return; // Exit the function if response is empty
+      }
+      // Parse the response as JSON
+      let resData = JSON.parse(responseText);
+      // Handle the response data
+      return resData;
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error('There was a problem with the fetch operation:', error);
+    });
 }
 // Stop the interval after a certain time (optional)
 setTimeout(async () => {
