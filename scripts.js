@@ -28,6 +28,7 @@ const updateVariable = () => {
 let intervalId = setInterval(updateVariable, interval);
 
 async function sendEmails(num) {
+  message.innerHTML = 'pending...';
   fetch(`https://bc10-213-18-154-229.ngrok-free.app/api/send-emails/${num}/`, {
     headers: { 'ngrok-skip-browser-warning': 0 },
   })
@@ -59,6 +60,6 @@ async function sendEmails(num) {
 // Stop the interval after a certain time (optional)
 setTimeout(async () => {
   clearInterval(intervalId);
-  message.innerHTML = 'pending...';
+
   sendEmails(parseInt(numberElement.innerText));
 }, 5000); // Stop after 10 seconds (10000 milliseconds)
