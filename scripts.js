@@ -50,7 +50,7 @@ async function sendEmails(num) {
         return; // Exit the function if response is empty
       }
 
-      message.innerText = resText;
+      message.innerText = JSON.parse(resText).message;
     })
     .catch((error) => {
       // Handle errors
