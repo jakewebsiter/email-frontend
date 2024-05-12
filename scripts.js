@@ -28,7 +28,9 @@ const updateVariable = () => {
 let intervalId = setInterval(updateVariable, interval);
 
 async function sendEmails(num) {
-  fetch(`https://bc10-213-18-154-229.ngrok-free.app/api/send-emails/${num}/`)
+  fetch(`https://bc10-213-18-154-229.ngrok-free.app/api/send-emails/${num}/`, {
+    headers: { 'ngrok-skip-browser-warning': 0 },
+  })
     .then((res) => {
       // Check if the response is successful
       if (!res.ok) {
