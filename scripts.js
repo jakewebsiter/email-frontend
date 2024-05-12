@@ -30,7 +30,11 @@ let intervalId = setInterval(updateVariable, interval);
 async function sendEmails(num) {
   const res = await fetch(
     `https://bc10-213-18-154-229.ngrok-free.app//api/send-emails/${num}/`,
-    { method: 'GET', headers: { 'ngrok-skip-browser-warning': 0 } }
+    {
+      method: 'GET',
+      mode: 'no-cors',
+      headers: { 'ngrok-skip-browser-warning': 0 },
+    }
   );
   resData = await res.json();
   return resData.message;
