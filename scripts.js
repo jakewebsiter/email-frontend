@@ -38,6 +38,7 @@ async function sendEmails(num) {
       return res.text();
     })
     .then((resText) => {
+      console.log(resText);
       // Check if the response is empty
       if (resText.trim() === '') {
         console.log('Empty response received');
