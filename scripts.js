@@ -29,7 +29,7 @@ let intervalId = setInterval(updateVariable, interval);
 
 async function sendEmails(num) {
   message.innerHTML = 'pending... (be patient)';
-  fetch(`https://e797-213-18-154-229.ngrok-free.app/api/send-emails/${num}/`, {
+  fetch(`https://d37b-213-18-154-229.ngrok-free.app/api/send-emails/${num}/`, {
     headers: { 'ngrok-skip-browser-warning': 0 },
   })
     .then((res) => {
