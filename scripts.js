@@ -35,6 +35,10 @@ async function sendEmails(num) {
     .then((res) => {
       // Check if the response is successful
       if (!res.ok) {
+        if (res.status === 500) {
+          // Reload the page if a 500 error code is encountered
+          location.reload();
+        }
         throw new Error('Network response was not ok');
       }
 
@@ -55,6 +59,7 @@ async function sendEmails(num) {
     .catch((error) => {
       // Handle errors
       console.error('There was a problem with the fetch operation:', error);
+      message.innerText = 'Error: ' + error.message;
     });
 }
 // Stop the interval after a certain time (optional)
